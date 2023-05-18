@@ -31,6 +31,16 @@ function fun(e) {
         btn.appendChild(del);
         lst.appendChild(btn);
 
+        //EDIT BUTTON
+
+        let editbtn = document.createElement('button');
+        editbtn.className = 'edit-btn';
+        let edit = document.createTextNode('Edit');
+        editbtn.appendChild(edit);
+        lst.appendChild(editbtn);
+
+        
+
         let listmain = document.querySelector('.userlist');
 
         listmain.appendChild(lst);
@@ -42,6 +52,11 @@ function fun(e) {
         let delbtn = document.querySelectorAll('.del-btn');
         for (let i = 0; i < delbtn.length; i++) {
             delbtn[i].addEventListener('click',delfun);
+        }
+
+        let editbutton = document.querySelectorAll('.edit-btn');
+        for (let i = 0; i < editbutton.length; i++) {
+            editbutton[i].addEventListener('click',editfun);
         }
 
     }
@@ -68,6 +83,39 @@ function delfun(e) {
     emailtodel+=emailobj[i];
 
    }
+   localStorage.removeItem(emailtodel);
+
+    
+
+    lstt.remove();
+}
+
+function editfun(e) {
+    let lstt=e.target.parentNode;
+   let emailobj=lstt.innerText;
+   let emailtodel="";
+   let passwordtodel="";
+   let x=0;
+
+   for(let i=8;i<emailobj.length;i++)
+   {
+    if(emailobj[i]==' ')
+    {
+        x=i;
+        break;
+    }
+    
+    emailtodel+=emailobj[i];
+
+   }
+   let objtoedit=localStorage.getItem(emailtodel);
+   let dobj=JSON.parse(objtoedit);
+
+   
+
+   document.querySelector('#exampleInputEmail1').value=dobj['email'];
+   document.querySelector('#exampleInputPassword1').value=dobj['password'];
+
    localStorage.removeItem(emailtodel);
 
     
