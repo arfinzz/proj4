@@ -17,10 +17,11 @@ function fun(e){
         }
 
         let objs=JSON.stringify(obj);
+        let mail=document.querySelector('#exampleInputEmail1').value;
         
 
 
-        localStorage.setItem('user',objs);
+        localStorage.setItem(mail,objs);
        
     }
     else
