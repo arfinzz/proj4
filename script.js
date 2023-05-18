@@ -8,11 +8,20 @@ function fun(e){
     let check=document.querySelector('#exampleCheck1').checked;
     if(check)
     {
-        let email=document.querySelector('#exampleInputEmail1').value;
-        let pass=document.querySelector('#exampleInputPassword1').value;
 
-        localStorage.setItem('email',email);
-        localStorage.setItem('password',pass);
+        let obj={
+
+
+            email : document.querySelector('#exampleInputEmail1').value,
+       pass : document.querySelector('#exampleInputPassword1').value,
+        }
+
+        let objs=JSON.stringify(obj);
+        
+
+
+        localStorage.setItem('user',objs);
+       
     }
     else
     {
